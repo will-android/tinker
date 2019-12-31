@@ -32,15 +32,25 @@ public class TinkerMultidexConfigTask extends DefaultTask {
                     "    <init>(...);\n" +
                     "    void onBaseContextAttached(android.content.Context);\n" +
                     "}\n" +
-                    "\n" +
-                    "-keep public class com.tencent.tinker.entry.ApplicationLifeCycle {\n" +
-                    "    *;\n" +
+                    "-keep public class * implements com.tencent.tinker.loader.app.ITinkerInlineFenceBridge {\n" +
+                    "    <init>(...);\n" +
+                    "    void attachBaseContext(com.tencent.tinker.loader.app.TinkerApplication, android.content.Context);\n" +
                     "}\n" +
-                    "\n" +
                     "-keep public class * extends com.tencent.tinker.loader.TinkerLoader {\n" +
                     "    <init>(...);\n" +
                     "}\n" +
-                    "\n" +
+                    "-keep public class com.tencent.tinker.loader.NewClassLoaderInjector {\n" +
+                    "    *;\n" +
+                    "}\n" +
+                    "-keep class com.tencent.tinker.loader.NewClassLoaderInjector\$DispatchClassLoader {\n" +
+                    "    *;\n" +
+                    "}\n" +
+                    "-keep class com.tencent.tinker.entry.TinkerApplicationInlineFence {\n" +
+                    "    *;\n" +
+                    "}\n" +
+                    "-keep class com.tencent.tinker.loader.app.TinkerInlineFenceAction {\n" +
+                    "    *;\n" +
+                    "}\n" +
                     "-keep public class * extends android.app.Application {\n" +
                     "     <init>();\n" +
                     "     void attachBaseContext(android.content.Context);\n" +
@@ -89,8 +99,6 @@ public class TinkerMultidexConfigTask extends DefaultTask {
                     "}\n")
                     .append("\n")
         }
-
-
 
         // Write our recommended proguard settings to this file
         FileWriter fr = new FileWriter(file.path)
