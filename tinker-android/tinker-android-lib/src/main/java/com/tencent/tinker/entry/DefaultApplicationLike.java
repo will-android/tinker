@@ -24,8 +24,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.annotation.Keep;
 import android.util.Log;
+import com.tencent.tinker.anno.Keep;
 
 /**
  * Empty implementation of {@link ApplicationLike}.

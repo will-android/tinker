@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package tinker.sample.android;
-
-import android.app.Application;
-import android.test.ApplicationTestCase;
+package com.tencent.tinker.loader;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * Created by zhangshaowen on 16/7/8.
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
-        super(Application.class);
+public class TinkerRuntimeException extends RuntimeException {
+    private static final String TINKER_RUNTIME_EXCEPTION_PREFIX = "Tinker Exception:";
+    private static final long serialVersionUID = 1L;
+
+    public TinkerRuntimeException(String detailMessage) {
+        super(TINKER_RUNTIME_EXCEPTION_PREFIX + detailMessage);
     }
+
+    public TinkerRuntimeException(String detailMessage, Throwable throwable) {
+        super(TINKER_RUNTIME_EXCEPTION_PREFIX + detailMessage, throwable);
+    }
+
 }
